@@ -5,6 +5,7 @@
  */
 package CODIGOS;
 
+import java.awt.MouseInfo;
 import java.awt.event.ActionEvent;
 import java.util.Random;
 import javax.swing.Timer;
@@ -16,7 +17,7 @@ import javax.swing.Timer;
 public class Tela extends javax.swing.JFrame {
     
     public static int y, x, contador,contador2, na, posicao_vertical_aleatoria_1, posicao_vertical_aleatoria_2, posicao_vertical_aleatoria_3,
-    posicao_vertical_aleatoria_4, posicao_vertical_aleatoria_5, posicao_vertical_aleatoria_6;
+    posicao_vertical_aleatoria_4, posicao_vertical_aleatoria_5, posicao_vertical_aleatoria_6, posicao_vertical_aleatoria_7;
     
     public Timer timer;
     
@@ -43,6 +44,7 @@ public class Tela extends javax.swing.JFrame {
         inimigo4 = new javax.swing.JLabel();
         inimigo5 = new javax.swing.JLabel();
         inimigo6 = new javax.swing.JLabel();
+        inimigo7 = new javax.swing.JLabel();
         PAPEL_DE_PAREDE = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -80,6 +82,10 @@ public class Tela extends javax.swing.JFrame {
         inimigo6.setFocusable(false);
         jDesktopPane1.add(inimigo6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, -1, -1));
 
+        inimigo7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/ghost_icon_by_mechamushroom-d4x5owh.gif"))); // NOI18N
+        inimigo7.setFocusable(false);
+        jDesktopPane1.add(inimigo7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, -1, -1));
+
         PAPEL_DE_PAREDE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/castelo2.jpg"))); // NOI18N
         jDesktopPane1.add(PAPEL_DE_PAREDE, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -107,6 +113,7 @@ public class Tela extends javax.swing.JFrame {
         inimigo4.setVisible(false);
         inimigo5.setVisible(false);
         inimigo6.setVisible(false);
+        inimigo7.setVisible(false);
         
         int menor_posicao_x_1 = -46;//-46
         int maior_posicao_x_1 = 1363;
@@ -138,6 +145,11 @@ public class Tela extends javax.swing.JFrame {
         int menor_posicao_y_6 = -49;
         int maior_posicao_y_6 = 744;
         
+        int menor_posicao_x_7 = -46;//-46
+        int maior_posicao_x_7 = 1363;
+        int menor_posicao_y_7 = -49;
+        int maior_posicao_y_7 = 744;
+        
         Random random = new Random();
         posicao_vertical_aleatoria_1 = random.nextInt(maior_posicao_y_1+1);
         posicao_vertical_aleatoria_2 = random.nextInt(maior_posicao_y_2+1);
@@ -145,12 +157,15 @@ public class Tela extends javax.swing.JFrame {
         posicao_vertical_aleatoria_4 = random.nextInt(maior_posicao_y_4+1);
         posicao_vertical_aleatoria_5 = random.nextInt(maior_posicao_y_5+1);
         posicao_vertical_aleatoria_6 = random.nextInt(maior_posicao_y_6+1);
+        posicao_vertical_aleatoria_7 = random.nextInt(maior_posicao_y_7+1);
         
         this.setExtendedState(MAXIMIZED_BOTH);//DEFINE A JANELA PARA INICIAR MAXIMIZADA
         
         timer = new Timer(20, (ActionEvent e) -> {
             
             contador = contador+10;
+            
+            //String posicao_do_mouse = "X: "+MouseInfo.getPointerInfo().getLocation().x+" Y: "+MouseInfo.getPointerInfo().getLocation().y;
             
             if(inimigo1.getX() < maior_posicao_x_1){
                 
@@ -160,6 +175,7 @@ public class Tela extends javax.swing.JFrame {
             inimigo4.setLocation(menor_posicao_x_4+contador, posicao_vertical_aleatoria_4);
             inimigo5.setLocation(menor_posicao_x_5+contador, posicao_vertical_aleatoria_5);
             inimigo6.setLocation(menor_posicao_x_6+contador, posicao_vertical_aleatoria_6);
+            inimigo7.setLocation(menor_posicao_x_7+contador, posicao_vertical_aleatoria_7);
                 
             }else{
                 
@@ -171,6 +187,7 @@ public class Tela extends javax.swing.JFrame {
                 posicao_vertical_aleatoria_4 = random.nextInt(maior_posicao_y_4+1);
                 posicao_vertical_aleatoria_5 = random.nextInt(maior_posicao_y_5+1);
                 posicao_vertical_aleatoria_6 = random.nextInt(maior_posicao_y_6+1);
+                posicao_vertical_aleatoria_7 = random.nextInt(maior_posicao_y_7+1);
                 
                 inimigo1.setLocation(menor_posicao_x_1, posicao_vertical_aleatoria_1);
                 inimigo2.setLocation(menor_posicao_x_2, posicao_vertical_aleatoria_2);
@@ -178,8 +195,9 @@ public class Tela extends javax.swing.JFrame {
                 inimigo4.setLocation(menor_posicao_x_4, posicao_vertical_aleatoria_4);
                 inimigo5.setLocation(menor_posicao_x_5, posicao_vertical_aleatoria_5);
                 inimigo6.setLocation(menor_posicao_x_6, posicao_vertical_aleatoria_6);
+                inimigo7.setLocation(menor_posicao_x_7, posicao_vertical_aleatoria_7);
                 
-                int quantidade = random.nextInt(6);
+                int quantidade = random.nextInt(7);
             if(quantidade == 0){
                 inimigo1.setVisible(true);
                 inimigo2.setVisible(false);
@@ -187,6 +205,7 @@ public class Tela extends javax.swing.JFrame {
                 inimigo4.setVisible(false);
                 inimigo5.setVisible(false);
                 inimigo6.setVisible(false);
+                inimigo7.setVisible(false);
             }else
             if(quantidade == 1){
                 inimigo1.setVisible(true);
@@ -195,24 +214,25 @@ public class Tela extends javax.swing.JFrame {
                 inimigo4.setVisible(false);
                 inimigo5.setVisible(false);
                 inimigo6.setVisible(false);
+                inimigo7.setVisible(false);
             }else
             if(quantidade == 2){
-                
                 inimigo1.setVisible(true);
                 inimigo2.setVisible(true);
                 inimigo3.setVisible(true);
                 inimigo4.setVisible(false);
                 inimigo5.setVisible(false);
                 inimigo6.setVisible(false);
+                inimigo7.setVisible(false);
             }else
             if(quantidade == 3){
-                
                 inimigo1.setVisible(true);
                 inimigo2.setVisible(true);
                 inimigo3.setVisible(true);
                 inimigo4.setVisible(true);
                 inimigo5.setVisible(false);
                 inimigo6.setVisible(false);
+                inimigo7.setVisible(false);
             }else
             if(quantidade == 4){   
                 inimigo1.setVisible(true);
@@ -221,6 +241,7 @@ public class Tela extends javax.swing.JFrame {
                 inimigo4.setVisible(true);
                 inimigo5.setVisible(true);
                 inimigo6.setVisible(false);
+                inimigo7.setVisible(false);
             }else
             if(quantidade == 5){   
                 inimigo1.setVisible(true);
@@ -229,6 +250,16 @@ public class Tela extends javax.swing.JFrame {
                 inimigo4.setVisible(true);
                 inimigo5.setVisible(true);
                 inimigo6.setVisible(true);
+                inimigo7.setVisible(false);
+            }else
+            if(quantidade == 6){   
+                inimigo1.setVisible(true);
+                inimigo2.setVisible(true);
+                inimigo3.setVisible(true);
+                inimigo4.setVisible(true);
+                inimigo5.setVisible(true);
+                inimigo6.setVisible(true);
+                inimigo7.setVisible(true);
             }
                 
             }
@@ -325,6 +356,7 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JLabel inimigo4;
     private javax.swing.JLabel inimigo5;
     private javax.swing.JLabel inimigo6;
+    private javax.swing.JLabel inimigo7;
     private javax.swing.JDesktopPane jDesktopPane1;
     // End of variables declaration//GEN-END:variables
 }
