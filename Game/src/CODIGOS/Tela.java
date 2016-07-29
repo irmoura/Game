@@ -78,15 +78,14 @@ public class Tela extends javax.swing.JFrame {
     private void initComponents() {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
-        inimigo2 = new javax.swing.JLabel();
         inimigo1 = new javax.swing.JLabel();
+        inimigo2 = new javax.swing.JLabel();
         inimigo3 = new javax.swing.JLabel();
         inimigo4 = new javax.swing.JLabel();
         inimigo5 = new javax.swing.JLabel();
         inimigo6 = new javax.swing.JLabel();
         inimigo7 = new javax.swing.JLabel();
         personagem = new javax.swing.JLabel();
-        poder = new javax.swing.JLabel();
         PAPEL_DE_PAREDE = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -100,43 +99,39 @@ public class Tela extends javax.swing.JFrame {
 
         jDesktopPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        inimigo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/ghost_icon_by_mechamushroom-d4x5owh.gif"))); // NOI18N
-        inimigo2.setFocusable(false);
-        jDesktopPane1.add(inimigo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, -1));
-
-        inimigo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/ghost_icon_by_mechamushroom-d4x5owh.gif"))); // NOI18N
+        inimigo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/Fantasma_Gif.gif"))); // NOI18N
         inimigo1.setFocusable(false);
         jDesktopPane1.add(inimigo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        inimigo3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/ghost_icon_by_mechamushroom-d4x5owh.gif"))); // NOI18N
+        inimigo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/Fantasma_Gif.gif"))); // NOI18N
+        inimigo2.setFocusable(false);
+        jDesktopPane1.add(inimigo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, -1));
+
+        inimigo3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/Fantasma_Gif.gif"))); // NOI18N
         inimigo3.setFocusable(false);
         jDesktopPane1.add(inimigo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, -1, -1));
 
-        inimigo4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/ghost_icon_by_mechamushroom-d4x5owh.gif"))); // NOI18N
+        inimigo4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/Fantasma_Gif.gif"))); // NOI18N
         inimigo4.setFocusable(false);
         jDesktopPane1.add(inimigo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, -1, -1));
 
-        inimigo5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/ghost_icon_by_mechamushroom-d4x5owh.gif"))); // NOI18N
+        inimigo5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/Fantasma_Gif.gif"))); // NOI18N
         inimigo5.setFocusable(false);
         jDesktopPane1.add(inimigo5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, -1, -1));
 
-        inimigo6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/ghost_icon_by_mechamushroom-d4x5owh.gif"))); // NOI18N
+        inimigo6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/Fantasma_Gif.gif"))); // NOI18N
         inimigo6.setFocusable(false);
         jDesktopPane1.add(inimigo6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, -1, -1));
 
-        inimigo7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/ghost_icon_by_mechamushroom-d4x5owh.gif"))); // NOI18N
+        inimigo7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/Fantasma_Gif.gif"))); // NOI18N
         inimigo7.setFocusable(false);
-        jDesktopPane1.add(inimigo7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, -1, -1));
+        jDesktopPane1.add(inimigo7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, -1, -1));
 
         personagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/Giant_Jellyfish.gif"))); // NOI18N
         personagem.setFocusable(false);
-        jDesktopPane1.add(personagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, -66, -1, -1));
+        jDesktopPane1.add(personagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, -66, -1, -1));
 
-        poder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/D9Z_Star.gif"))); // NOI18N
-        poder.setFocusable(false);
-        jDesktopPane1.add(poder, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 120, -1, -1));
-
-        PAPEL_DE_PAREDE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/castelo2.jpg"))); // NOI18N
+        PAPEL_DE_PAREDE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/Castelo_Mal_Assombrado.jpg"))); // NOI18N
         PAPEL_DE_PAREDE.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 PAPEL_DE_PAREDEMouseClicked(evt);
@@ -152,7 +147,9 @@ public class Tela extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -162,7 +159,7 @@ public class Tela extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         
-        inimigo1.setVisible(false);
+        inimigo1.setVisible(true);
         inimigo2.setVisible(false);
         inimigo3.setVisible(false);
         inimigo4.setVisible(false);
@@ -385,6 +382,5 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JLabel inimigo7;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel personagem;
-    private javax.swing.JLabel poder;
     // End of variables declaration//GEN-END:variables
 }

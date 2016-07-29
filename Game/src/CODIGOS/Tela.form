@@ -33,7 +33,10 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jDesktopPane1" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="jDesktopPane1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -44,23 +47,10 @@
         <Property name="useNullLayout" type="boolean" value="false"/>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="inimigo2">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/CODIGOS/Imagens/ghost_icon_by_mechamushroom-d4x5owh.gif"/>
-            </Property>
-            <Property name="focusable" type="boolean" value="false"/>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="50" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
         <Component class="javax.swing.JLabel" name="inimigo1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/CODIGOS/Imagens/ghost_icon_by_mechamushroom-d4x5owh.gif"/>
+              <Image iconType="3" name="/CODIGOS/Imagens/Fantasma_Gif.gif"/>
             </Property>
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
@@ -70,10 +60,23 @@
             </Constraint>
           </Constraints>
         </Component>
+        <Component class="javax.swing.JLabel" name="inimigo2">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/CODIGOS/Imagens/Fantasma_Gif.gif"/>
+            </Property>
+            <Property name="focusable" type="boolean" value="false"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="0" y="50" width="-1" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
         <Component class="javax.swing.JLabel" name="inimigo3">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/CODIGOS/Imagens/ghost_icon_by_mechamushroom-d4x5owh.gif"/>
+              <Image iconType="3" name="/CODIGOS/Imagens/Fantasma_Gif.gif"/>
             </Property>
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
@@ -86,7 +89,7 @@
         <Component class="javax.swing.JLabel" name="inimigo4">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/CODIGOS/Imagens/ghost_icon_by_mechamushroom-d4x5owh.gif"/>
+              <Image iconType="3" name="/CODIGOS/Imagens/Fantasma_Gif.gif"/>
             </Property>
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
@@ -99,7 +102,7 @@
         <Component class="javax.swing.JLabel" name="inimigo5">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/CODIGOS/Imagens/ghost_icon_by_mechamushroom-d4x5owh.gif"/>
+              <Image iconType="3" name="/CODIGOS/Imagens/Fantasma_Gif.gif"/>
             </Property>
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
@@ -112,7 +115,7 @@
         <Component class="javax.swing.JLabel" name="inimigo6">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/CODIGOS/Imagens/ghost_icon_by_mechamushroom-d4x5owh.gif"/>
+              <Image iconType="3" name="/CODIGOS/Imagens/Fantasma_Gif.gif"/>
             </Property>
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
@@ -125,13 +128,13 @@
         <Component class="javax.swing.JLabel" name="inimigo7">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/CODIGOS/Imagens/ghost_icon_by_mechamushroom-d4x5owh.gif"/>
+              <Image iconType="3" name="/CODIGOS/Imagens/Fantasma_Gif.gif"/>
             </Property>
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="350" width="-1" height="-1"/>
+              <AbsoluteConstraints x="0" y="300" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -144,27 +147,14 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="890" y="-66" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JLabel" name="poder">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/CODIGOS/Imagens/D9Z_Star.gif"/>
-            </Property>
-            <Property name="focusable" type="boolean" value="false"/>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="880" y="120" width="-1" height="-1"/>
+              <AbsoluteConstraints x="910" y="-66" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="PAPEL_DE_PAREDE">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/CODIGOS/Imagens/castelo2.jpg"/>
+              <Image iconType="3" name="/CODIGOS/Imagens/Castelo_Mal_Assombrado.jpg"/>
             </Property>
           </Properties>
           <Events>
