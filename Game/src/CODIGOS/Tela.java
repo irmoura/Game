@@ -5,10 +5,15 @@
  */
 package CODIGOS;
 
+import java.awt.Cursor;
+import java.awt.KeyboardFocusManager;
 import java.awt.MouseInfo;
+import java.awt.Point;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 import java.util.Random;
-import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 /**
@@ -18,7 +23,8 @@ import javax.swing.Timer;
 public class Tela extends javax.swing.JFrame {
     
     public static int y, x, contador,contador2, na, posicao_vertical_aleatoria_1, posicao_vertical_aleatoria_2, posicao_vertical_aleatoria_3,
-    posicao_vertical_aleatoria_4, posicao_vertical_aleatoria_5, posicao_vertical_aleatoria_6, posicao_vertical_aleatoria_7;
+    posicao_vertical_aleatoria_4, posicao_vertical_aleatoria_5, posicao_vertical_aleatoria_6, posicao_vertical_aleatoria_7, yatual, xatual,
+    velocidade_do_tiro, velocidade_do_movimento;
     
     public int menor_posicao_x_1 = -46;//-46
     public int maior_posicao_x_1 = 1363;
@@ -86,6 +92,7 @@ public class Tela extends javax.swing.JFrame {
         inimigo6 = new javax.swing.JLabel();
         inimigo7 = new javax.swing.JLabel();
         personagem = new javax.swing.JLabel();
+        poder = new javax.swing.JLabel();
         PAPEL_DE_PAREDE = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -131,10 +138,17 @@ public class Tela extends javax.swing.JFrame {
         personagem.setFocusable(false);
         jDesktopPane1.add(personagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, -66, -1, -1));
 
+        poder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/star.gif"))); // NOI18N
+        poder.setFocusable(false);
+        jDesktopPane1.add(poder, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 300, -1, -1));
+
         PAPEL_DE_PAREDE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/Castelo_Mal_Assombrado.jpg"))); // NOI18N
         PAPEL_DE_PAREDE.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 PAPEL_DE_PAREDEMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                PAPEL_DE_PAREDEMouseEntered(evt);
             }
         });
         jDesktopPane1.add(PAPEL_DE_PAREDE, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -159,6 +173,8 @@ public class Tela extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         
+        velocidade_do_movimento = 10;
+        
         inimigo1.setVisible(true);
         inimigo2.setVisible(false);
         inimigo3.setVisible(false);
@@ -167,12 +183,13 @@ public class Tela extends javax.swing.JFrame {
         inimigo6.setVisible(false);
         inimigo7.setVisible(false);
         personagem.setVisible(true);
+        poder.setVisible(false);
         
         this.setExtendedState(MAXIMIZED_BOTH);//DEFINE A JANELA PARA INICIAR MAXIMIZADA
         
         timer = new Timer(10, (ActionEvent e) -> {
             
-            contador = contador+10;
+            contador = contador+5;
             
             //String posicao_do_mouse = "X: "+MouseInfo.getPointerInfo().getLocation().x+" Y: "+MouseInfo.getPointerInfo().getLocation().y;
             
@@ -186,7 +203,7 @@ public class Tela extends javax.swing.JFrame {
             inimigo6.setLocation(menor_posicao_x_6+contador, posicao_vertical_aleatoria_6);
             inimigo7.setLocation(menor_posicao_x_7+contador, posicao_vertical_aleatoria_7);
             
-            personagem.setLocation( (MouseInfo.getPointerInfo().getLocation().x)-70, (MouseInfo.getPointerInfo().getLocation().y)-50);
+            personagem.setLocation((MouseInfo.getPointerInfo().getLocation().x)-70, (MouseInfo.getPointerInfo().getLocation().y)-50);
                 
             }else{
                 
@@ -284,46 +301,43 @@ public class Tela extends javax.swing.JFrame {
         
         timer.start();
         
-        /*y = ghost.getY();
-        x = ghost.getX();
+        /*y = personagem.getY();
+        x = personagem.getX();
         
          KeyboardFocusManager.getCurrentKeyboardFocusManager()
-            .addKeyEventDispatcher(new KeyEventDispatcher() {
-                @Override
-                public boolean dispatchKeyEvent(KeyEvent event) {
-                    if(event.getID() == KeyEvent.KEY_PRESSED && event.getKeyCode() == 38){//cima
-                            
-                            y = y-velocidade_do_movimento;
-                            ghost.setLocation(x, y);
+            .addKeyEventDispatcher((KeyEvent event) -> {
+                if(event.getID() == KeyEvent.KEY_PRESSED && event.getKeyCode() == 38){//cima
+                    
+                    y = y-velocidade_do_movimento;
+                    personagem.setLocation(x, y);
+                    
+                    return true;
+                }
+                else
+                    if(event.getID() == KeyEvent.KEY_PRESSED && event.getKeyCode() == 40){//baixo
                         
-                           return true;
-                     }
-                    else
-                        if(event.getID() == KeyEvent.KEY_PRESSED && event.getKeyCode() == 40){//baixo
-                            
-                            y = y+velocidade_do_movimento;
-                            ghost.setLocation(x, y);
-                            
-                           return true;
-                     }
+                        y = y+velocidade_do_movimento;
+                        personagem.setLocation(x, y);
+                        
+                        return true;
+                    }
                     else
                         if(event.getID() == KeyEvent.KEY_PRESSED && event.getKeyCode() == 39){//direita
-                           
-                           x = x+velocidade_do_movimento;
-                           ghost.setLocation(x, y); 
                             
-                           return true;
-                     }
-                    else
-                        if(event.getID() == KeyEvent.KEY_PRESSED && event.getKeyCode() == 37){//esquerda
-                           
-                           x = x-velocidade_do_movimento;
-                           ghost.setLocation(x, y); 
+                            x = x+velocidade_do_movimento;
+                            personagem.setLocation(x, y);
                             
-                           return true;
-                     }
-                     return false;
-                }
+                            return true;
+                        }
+                        else
+                            if(event.getID() == KeyEvent.KEY_PRESSED && event.getKeyCode() == 37){//esquerda
+                                
+                                x = x-velocidade_do_movimento;
+                                personagem.setLocation(x, y);
+                                
+                                return true;
+                            }
+                return false;
         });*/
         
     }//GEN-LAST:event_formWindowOpened
@@ -331,9 +345,60 @@ public class Tela extends javax.swing.JFrame {
     private void PAPEL_DE_PAREDEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PAPEL_DE_PAREDEMouseClicked
         // TODO add your handling code here:
         
-        //JOptionPane.showMessageDialog(null,"Mouse Clicado");
+        yatual =  (MouseInfo.getPointerInfo().getLocation().y)-35;
+        xatual =  (MouseInfo.getPointerInfo().getLocation().x)-100;
+        
+        velocidade_do_tiro = 10;
+        
+        if(poder.isVisible()){
+            //poder.setVisible(false);
+            //timer.stop();
+        }else{
+            poder.setVisible(true);
+            poder.setLocation(xatual-contador2, yatual);
+            //timer.start();
+        }
+        
+        timer = new Timer(50, (ActionEvent e) -> {
+            
+        contador2 = contador2+10;
+            
+        //poder.setLocation((MouseInfo.getPointerInfo().getLocation().x)-100, (MouseInfo.getPointerInfo().getLocation().y)-35);
+        
+        //
+           
+        poder.setLocation(xatual-contador2, yatual);
+            
+        //
+        
+        if(poder.getX() < 1){
+            
+            poder.setLocation( xatual--, yatual);
+            
+            //yatual =  (MouseInfo.getPointerInfo().getLocation().y)-35;
+            
+            
+            //poder.setLocation(xatual-contador2, yatual);
+            
+            //poder.setVisible(false);
+            //timer.stop();
+            //poder.setLocation((MouseInfo.getPointerInfo().getLocation().x)-100,  (MouseInfo.getPointerInfo().getLocation().y)-35);
+        }
+        
+        });
+        
+        timer.start();
         
     }//GEN-LAST:event_PAPEL_DE_PAREDEMouseClicked
+
+    private void PAPEL_DE_PAREDEMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PAPEL_DE_PAREDEMouseEntered
+        // TODO add your handling code here:
+        
+        BufferedImage cursorImg = new BufferedImage(16, 16, BufferedImage.TRANSLUCENT);
+        Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(cursorImg, new Point(0, 0),"");
+        PAPEL_DE_PAREDE.setCursor(blankCursor);
+        
+    }//GEN-LAST:event_PAPEL_DE_PAREDEMouseEntered
 
     /**
      * @param args the command line arguments
@@ -382,5 +447,6 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JLabel inimigo7;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel personagem;
+    private javax.swing.JLabel poder;
     // End of variables declaration//GEN-END:variables
 }
