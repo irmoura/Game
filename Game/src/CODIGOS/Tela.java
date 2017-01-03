@@ -5,16 +5,22 @@
  */
 package CODIGOS;
 
+import java.awt.AWTException;
 import java.awt.Cursor;
-import java.awt.KeyboardFocusManager;
 import java.awt.MouseInfo;
 import java.awt.Point;
+import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Timer;
+import net.java.games.input.Component;
+import net.java.games.input.Controller;
+import net.java.games.input.ControllerEnvironment;
 
 /**
  *
@@ -24,7 +30,148 @@ public class Tela extends javax.swing.JFrame {
     
     public static int y, x, contador,contador2, na, posicao_vertical_aleatoria_1, posicao_vertical_aleatoria_2, posicao_vertical_aleatoria_3,
     posicao_vertical_aleatoria_4, posicao_vertical_aleatoria_5, posicao_vertical_aleatoria_6, posicao_vertical_aleatoria_7, yatual, xatual,
-    velocidade_do_tiro, velocidade_do_movimento;
+    velocidade_do_tiro, velocidade_do_movimento, HORIZONTAL, VERTICAL, PORCENTAGEM_DO_EIXO_X, PORCENTAGEM_DO_EIXO_Y;
+    
+    public ArrayList<Controller> foundControllers;
+    
+/**************************************************************************************************************************************/
+public void JoystickTest(){
+    foundControllers = new ArrayList<>();
+    searchForControllers();
+    if(!foundControllers.isEmpty())
+    startShowingControllerData();
+    else
+    System.out.println("Nenhum Controle encontrado.");
+}
+public void searchForControllers(){
+    Controller[] controllers = ControllerEnvironment.getDefaultEnvironment().getControllers();
+    for(int i = 0; i < controllers.length; i++){
+        Controller controller = controllers[i];
+        if (controller.getType() == Controller.Type.STICK || controller.getType() == Controller.Type.GAMEPAD || 
+            controller.getType() == Controller.Type.WHEEL || controller.getType() == Controller.Type.FINGERSTICK)
+        {
+            foundControllers.add(controller);
+        }
+    }
+}
+public void startShowingControllerData(){
+//    while(true){
+        int selectedControllerIndex = 0;
+        Controller controller = foundControllers.get(selectedControllerIndex);
+        if( !controller.poll() ){
+        System.out.println("Controle desconectado.");
+//        break;
+        }
+        PORCENTAGEM_DO_EIXO_X = 0;
+        PORCENTAGEM_DO_EIXO_Y = 0;
+        Component[] components = controller.getComponents();
+        for(int i=0; i < components.length; i++){
+                Component component = components[i];
+                Component.Identifier componentIdentifier = component.getIdentifier();
+                if(componentIdentifier.getName().matches("^[0-9]*$")){
+                    boolean isItPressed = true;
+                    if(component.getPollData() == 0.0f)
+                    isItPressed = false;
+                    String buttonIndex;
+                    buttonIndex = component.getIdentifier().toString();
+                    if(component.getPollData() == 1.0 && buttonIndex.equals("0")){
+                        System.out.println("TRIANGULO");
+                    }
+                    if(component.getPollData() == 1.0 && buttonIndex.equals("1")){
+                        System.out.println("BOLA");
+                    }
+                    if(component.getPollData() == 1.0 && buttonIndex.equals("2")){
+                        System.out.println("XIS");
+                    }
+                    if(component.getPollData() == 1.0 && buttonIndex.equals("3")){
+                        System.out.println("QUADRADO");
+                    }
+                    if(component.getPollData() == 1.0 && buttonIndex.equals("4")){
+                        System.out.println("L1");
+                    }
+                    if(component.getPollData() == 1.0 && buttonIndex.equals("5")){
+                        System.out.println("R1");
+                    }
+                    if(component.getPollData() == 1.0 && buttonIndex.equals("6")){
+                        System.out.println("L2");
+                    }
+                    if(component.getPollData() == 1.0 && buttonIndex.equals("7")){
+                        System.out.println("R2");
+                    }
+                    if(component.getPollData() == 1.0 && buttonIndex.equals("8")){
+                        System.out.println("SELECT");
+                    }
+                    if(component.getPollData() == 1.0 && buttonIndex.equals("9")){
+                        System.out.println("START");
+                    }
+                    //10 E 11 FUNCIONAM AO PRESSIONAR OS BOTOES ANALOGICOS PARA BAIXO
+                    continue;
+                }
+                // Hat switch
+                if(componentIdentifier == Component.Identifier.Axis.POV){
+                    float hatSwitchPosition = component.getPollData();
+//                    window.setHatSwitch(hatSwitchPosition);
+                    
+                    // We know that this component was hat switch so we can skip to next component.
+                    continue;
+                }
+                // Axes
+                if(component.isAnalog()){
+                    float axisValue = component.getPollData();
+                    int axisValueInPercentage = getAxisValueInPercentage(axisValue);
+                    
+                    // X axis
+                    if(componentIdentifier == Component.Identifier.Axis.X){
+                        PORCENTAGEM_DO_EIXO_X = axisValueInPercentage;
+                        
+                        continue; // Go to next component.
+                    }
+                    // Y axis
+                    if(componentIdentifier == Component.Identifier.Axis.Y){
+                        PORCENTAGEM_DO_EIXO_Y = axisValueInPercentage;
+                        continue; // Go to next component.
+                    }
+                    if(PORCENTAGEM_DO_EIXO_X != 49 || PORCENTAGEM_DO_EIXO_Y != 49){
+                        
+                        try {
+                            Robot bot = new Robot();
+                            
+                            HORIZONTAL = Integer.parseInt(""+MouseInfo.getPointerInfo().getLocation().x);
+                            VERTICAL = Integer.parseInt(""+MouseInfo.getPointerInfo().getLocation().y);
+                            
+                            if(PORCENTAGEM_DO_EIXO_X > 49){
+                                HORIZONTAL++;
+                                bot.mouseMove(HORIZONTAL , VERTICAL);
+                            }
+                            if(PORCENTAGEM_DO_EIXO_X < 49){
+                                HORIZONTAL--;
+                                bot.mouseMove(HORIZONTAL , VERTICAL);
+                            }
+                            if(PORCENTAGEM_DO_EIXO_Y > 49){
+                                VERTICAL++;
+                                bot.mouseMove(HORIZONTAL , VERTICAL);
+                            }
+                            if(PORCENTAGEM_DO_EIXO_Y < 49){
+                                VERTICAL--;
+                                bot.mouseMove(HORIZONTAL , VERTICAL);
+                            }
+                        } catch (AWTException ex) {
+                            Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                }
+        }
+//        try {
+//            Thread.sleep(10);//25
+//        } catch (InterruptedException ex) {
+//            Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }//end while
+}
+public int getAxisValueInPercentage(float axisValue){
+    return (int)(((2 - (1 - axisValue)) * 100) / 2);
+}
+/**************************************************************************************************************************************/
     
     public int menor_posicao_x_1 = -46;//-46
     public int maior_posicao_x_1 = 1363;
@@ -171,7 +318,8 @@ public class Tela extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
+        
+//        JoystickTest();
         
         velocidade_do_movimento = 10;
         
@@ -187,7 +335,9 @@ public class Tela extends javax.swing.JFrame {
         
         this.setExtendedState(MAXIMIZED_BOTH);//DEFINE A JANELA PARA INICIAR MAXIMIZADA
         
-        timer = new Timer(10, (ActionEvent e) -> {
+        timer = new Timer(5, (ActionEvent e) -> {
+            
+            JoystickTest();
             
             contador = contador+5;
             
