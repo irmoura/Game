@@ -38,10 +38,12 @@ public class Tela extends javax.swing.JFrame {
 public void JoystickTest(){
     foundControllers = new ArrayList<>();
     searchForControllers();
-    if(!foundControllers.isEmpty())
-    startShowingControllerData();
-    else
-    System.out.println("Nenhum Controle encontrado.");
+    if(!foundControllers.isEmpty()){
+        startShowingControllerData();
+    }
+    else{
+        System.out.println("Nenhum Controle encontrado.");
+    }
 }
 public void searchForControllers(){
     Controller[] controllers = ControllerEnvironment.getDefaultEnvironment().getControllers();
